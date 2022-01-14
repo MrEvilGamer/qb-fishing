@@ -1,3 +1,5 @@
+QBCore = exports['qb-core']:GetCoreObject()
+
 QBCore.Functions.CreateCallback('qb-fishing:GetItemData', function(source, cb, itemName)
 	local retval = false
 	local Player = QBCore.Functions.GetPlayer(source)
