@@ -1,3 +1,4 @@
+QBCore = exports['qb-core']:GetCoreObject()
 
 cachedData = {}
 local JobBusy = false
