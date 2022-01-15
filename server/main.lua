@@ -18,8 +18,7 @@ QBCore.Functions.CreateUseableItem("fishingrod", function(source, item)
     TriggerClientEvent('qb-fishing:tryToFish', source)
 end)
 
-RegisterServerEvent('qb-fishing:receiveFish')
-AddEventHandler('qb-fishing:receiveFish', function(cabin, house)
+RegisterServerEvent('qb-fishing:receiveFish', function(cabin, house)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local luck = math.random(1, 100)
@@ -86,13 +85,12 @@ AddEventHandler('qb-fishing:receiveFish', function(cabin, house)
                 Player.Functions.AddItem(randomItem, 1)
 				TriggerClientEvent('inventory:client:ItemBox', src, itemInfo, "add")
             end
-            Citizen.Wait(500)
+            Wait(500)
         end
     end
 end)
 
-RegisterServerEvent("qb-fishing:sellFish")
-AddEventHandler("qb-fishing:sellFish", function()
+RegisterServerEvent("qb-fishing:sellFish", function()
     local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
 	local price = 0
