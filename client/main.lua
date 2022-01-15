@@ -30,18 +30,16 @@ end
 -- function SellFish()
 
 
-RegisterNetEvent("qb-fishing:tryToFish")
-AddEventHandler("qb-fishing:tryToFish", function()
+RegisterNetEvent("qb-fishing:tryToFish", function()
 	TryToFish() 
 end)
 
-RegisterNetEvent("qb-fishing:calculatedistances")
-AddEventHandler("qb-fishing:calculatedistances", pos, function()
+RegisterNetEvent("qb-fishing:calculatedistances", pos, function()
 
 end)
 
-Citizen.CreateThread(function()
-	Citizen.Wait(500)
+CreateThread(function()
+	Wait(500)
 	HandleStore()
 	while true do
 		local sleepThread = 500
@@ -64,19 +62,19 @@ Citizen.CreateThread(function()
 					if IsControlJustPressed(0, 38) then
 						JobBusy = true
 						CreateBlips()
-						Citizen.Wait(5000)
+						Wait(5000)
 					end
 					ShowHelpNotification(displayText)
 				end
 			end
 		end
-		Citizen.Wait(sleepThread)
+		Wait(sleepThread)
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(1500)
+		Wait(1500)
 
 		local ped = PlayerPedId()
 
