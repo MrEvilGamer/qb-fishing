@@ -1,4 +1,4 @@
-local QBCore = exports['qb-core']:GetCoreObject()
+QBCore = exports['qb-core']:GetCoreObject()
 
 TryToFish = function()
     QBCore.Functions.TriggerCallback('qb-fishing:GetItemData', function(count)
@@ -37,7 +37,7 @@ CastBait = function(rodHandle, castLocation)
     end
 
     while not IsControlJustPressed(0, 47) do
-        Citizen.Wait(5)
+        Wait(5)
 
         ShowHelpNotification("Cast your line by pressing ~INPUT_DETONATE~")
 
@@ -54,7 +54,7 @@ CastBait = function(rodHandle, castLocation)
     })
 
     while IsEntityPlayingAnim(cachedData["ped"], "mini@tennis", "forehand_ts_md_far", 3) do
-        Citizen.Wait(0)
+        Wait(0)
     end
 
     PlayAnimation(cachedData["ped"], "amb@world_human_stand_fishing@idle_a", "idle_c", {
@@ -71,10 +71,10 @@ CastBait = function(rodHandle, castLocation)
 
     local interupted = false
 
-    Citizen.Wait(1000)
+    Wait(1000)
 
     while GetGameTimer() - startedBaiting < randomBait do
-        Citizen.Wait(5)
+        Wait(5)
 
         if not IsEntityPlayingAnim(cachedData["ped"], "amb@world_human_stand_fishing@idle_a", "idle_c", 3) then
             interupted = true
@@ -122,7 +122,7 @@ TryToCatchFish = function()
         RequestStreamedTextureDict(minigameSprites["powerDict"], false)
         RequestStreamedTextureDict(minigameSprites["tennisDict"], false)
 
-        Citizen.Wait(5)
+        Wait(5)
     end
 
     local swingOffset = 0.09
@@ -133,7 +133,7 @@ TryToCatchFish = function()
     end
 
     while true do
-        Citizen.Wait(5)
+        Wait(5)
 
         ShowHelpNotification("Press ~INPUT_CONTEXT~ in the green area.")
 
@@ -198,7 +198,7 @@ IsInWater = function()
     QBCore.Functions.Notify("Checking fishing location...", "success", "3000")
 
     while GetGameTimer() - startedCheck < 3000 do
-        Citizen.Wait(0)
+        Wait(0)
     end
 
     RemoveLoadingPrompt()
@@ -268,11 +268,11 @@ end
 
 PlayAnimation = function(ped, dict, anim, settings)
 	if dict then
-        Citizen.CreateThread(function()
+        CreateThread(function()
             RequestAnimDict(dict)
 
             while not HasAnimDictLoaded(dict) do
-                Citizen.Wait(100)
+                Wait(100)
             end
 
             if settings == nil then
@@ -318,7 +318,7 @@ FadeOut = function(duration)
     DoScreenFadeOut(duration)
     
     while not IsScreenFadedOut() do
-        Citizen.Wait(0)
+        Wait(0)
     end
 end
 
@@ -326,7 +326,7 @@ FadeIn = function(duration)
     DoScreenFadeIn(500)
 
     while not IsScreenFadedIn() do
-        Citizen.Wait(0)
+        Wait(0)
     end
 end
 
@@ -340,7 +340,7 @@ WaitForModel = function(model)
 	end
 	
 	while not HasModelLoaded(model) do
-		Citizen.Wait(0)
+		Wait(0)
 	end
 end
 
