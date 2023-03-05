@@ -364,11 +364,9 @@ end
 
 function HasFishingBait()
     local rtval = false
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(amount)
-        if amount then
-            rtval = true
-        end
-    end, "fishingbait")
+    if QBCore.Functions.HasItem('fishingbait') then
+        rtval = true
+    end
     Wait(1000)
     return rtval
 end
