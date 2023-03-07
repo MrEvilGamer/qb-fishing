@@ -137,3 +137,8 @@ RegisterServerEvent("qb-fishing:sellFish", function()
 		TriggerClientEvent('QBCore:Notify', src, "You have sold your fish")
 	end
 end)
+
+RegisterNetEvent('en-fishing:remove:bait', function ()
+	local Player = QBCore.Functions.GetPlayer(source)
+	Player.Functions.RemoveItem('fishingbait', 1)
+end)
